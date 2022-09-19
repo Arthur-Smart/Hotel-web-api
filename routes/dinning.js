@@ -16,8 +16,17 @@ router.post('/dinning', (req, res) => {
 
 router.get('/dinning', async(req, res) => {
   try{
-   const dinning = await Booking.find()
+   const dinning = await Booking.find().sort({_id:-1})
    res.status(200).json(dinning)
+  }catch(err){
+   res.status(500).json(err)
+  }
+})
+
+router.delete('/dinning/dine/:id', async(req, res) => {
+  try{
+   await Booking.findByIdAndDelete(req.params.id)
+   res.status(200).json('Dinning Deleted Successfully')
   }catch(err){
    res.status(500).json(err)
   }
