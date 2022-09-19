@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
 const OrderSchema = new mongoose.Schema({
+    photo:{
+        type:String,
+        required:true
+    },
    name:{
     type:String,
     required:true
