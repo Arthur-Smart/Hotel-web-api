@@ -14,4 +14,13 @@ router.post('/dinning', (req, res) => {
     }
 });
 
+router.get('/dinning', async(req, res) => {
+  try{
+   const dinning = await Booking.find()
+   res.status(200).json(dinning)
+  }catch(err){
+   res.status(500).json(err)
+  }
+})
+
 module.exports = router;

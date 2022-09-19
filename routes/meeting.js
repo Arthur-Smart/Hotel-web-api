@@ -14,4 +14,13 @@ router.post('/meeting', (req, res) => {
     }
 });
 
+router.get('/meeting', async(req, res) => {
+  try{
+   const meetings = await Booking.find()
+   res.status(200).json(meetings)
+  }catch(err){
+   res.status(500).json(err)
+  }
+})
+
 module.exports = router;
