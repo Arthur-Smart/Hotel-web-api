@@ -4,7 +4,7 @@ const Order = require('../models/Order')
 
 //Post the booked room to the database
 
-router.post('/order', (req, res) => {
+router.post('/food-order', (req, res) => {
     const newOrder = new Order(req.body)
     try{
      newOrder.save();
@@ -14,7 +14,7 @@ router.post('/order', (req, res) => {
     }
 });
 
-router.get('/order', async(req, res) => {
+router.get('/food-order', async(req, res) => {
   try{
    const order = await Order.find().sort({_id:-1})
    res.status(200).json(order)
@@ -23,7 +23,7 @@ router.get('/order', async(req, res) => {
   }
 })
 
-router.delete('/order/del/:id', async(req, res) => {
+router.delete('/food-order/del/:id', async(req, res) => {
   try {
   await Order.findByIdAndDelete(req.params.id)
   res.status(200).json('Order deleted Successfully')    
